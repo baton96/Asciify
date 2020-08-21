@@ -1,20 +1,16 @@
-import os
-
-import cv2
-import numpy as np
-
-chars = np.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
-
-
 def show_webcam():
-    cam = cv2.VideoCapture(0)
+    from cv2 import flip, resize, VideoCapture
+    from numpy import asarray, sum
+    from os import system
+    chars = asarray(list(' .,:;irsXA253hMHGS#9B&@'))
+    cam = VideoCapture(0)
     try:
         while True:
             img = cam.read()[1]
-            img = np.sum(
-                cv2.flip(cv2.resize(
+            img = sum(
+                flip(resize(
                     img, (120, 64),
-                    interpolation=cv2.INTER_NEAREST
+                    interpolation=0
                 ), 0), axis=2
             )
             mi, ma = img.min(), img.max()
@@ -24,9 +20,9 @@ def show_webcam():
             toPrint = '\n'.join(
                 [''.join(r) for r in chars[img]]
             )
-            os.system('cls')
+            system('cls')
             print(toPrint)
-    except:
+    except KeyboardInterrupt:
         cam.release()
 
 
