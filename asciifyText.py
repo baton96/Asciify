@@ -12,8 +12,7 @@ chars = np.asarray([v[0] for v in weights.values()])
 
 fontSize = ImageFont.load_default().getsize(chr(32))
 chars = np.asarray(list(' .,-;*?vIJV7&%#A@80$'))
-# ratio = fontSize[1] / fontSize[0]
-ratio = 11 / 6
+ratio = fontSize[1] / fontSize[0]
 img = Image.open('img.png')
 img = np.sum(
     img.resize(
