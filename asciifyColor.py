@@ -19,4 +19,5 @@ for i, line in enumerate(arr):
     for j, pixel in enumerate(line):
         color = '#%02x%02x%02x%02x' % tuple(pixel)
         draw.text((charWidth * j, charHeight * i), '@', color)
+newImg = newImg.resize((int(img.size[0]*(charWidth / charHeight)), img.size[1]))
 newImg.save('asciiColor.png')
